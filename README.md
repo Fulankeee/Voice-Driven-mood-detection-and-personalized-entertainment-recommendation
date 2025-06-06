@@ -30,7 +30,7 @@ This project integrates **emotion recognition** and **personalized content recom
 ## Dataset: Emotional Speech Data (ESD)
 
 - **Link**: [GitHub - HLTSingapore/Emotional-Speech-Data](https://github.com/HLTSingapore/Emotional-Speech-Data)
-- **Languages**: Multilingual (we used 3 English speakers)
+- **Languages**: Mandarin & English with multi-spearkers
 - **Classes**: Neutral, Happy, Sad, Angry, Surprise
 - **Format**: `.wav` audio clips with labeled emotions
 
@@ -49,10 +49,10 @@ This project integrates **emotion recognition** and **personalized content recom
 
 ```text
 [768 features] -
-→ Conv1D(256) - BatchNorm - ReLU - Pool -
-→ Conv1D(128) - BatchNorm - ReLU - Pool -
-→ Conv1D(64) - BatchNorm → ReLU - Pool -
-→ Flatten - FC(128) - Dropout - FC(5 classes)
+Conv1D(256) - BatchNorm - ReLU - Pool -
+Conv1D(128) - BatchNorm - ReLU - Pool -
+Conv1D(64) - BatchNorm → ReLU - Pool -
+Flatten - FC(128) - Dropout - FC(5 classes)
 ```
 
 - **Loss**: `CrossEntropyLoss`
