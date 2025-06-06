@@ -79,30 +79,59 @@ Flatten - FC(128) - Dropout - FC(5 classes)
 
 ---
 
-## Recommendation System
+## Integrating Deep Learning with Hugging Face & OpenAI APIs
 
-Once emotion is detected, the system maps it to a type of content:
+### Emotion Classification with CNN (Wav2Vec2)
 
-| Emotion  | Recommendation                    |
-|----------|------------------------------------|
-| Happy    | Upbeat songs / comedy videos    |
-| Sad      | Comforting music / calm videos  |
-| Angry    | Meditation / nature documentaries |
-| Surprise | Curious facts / light humor     |
-| Neutral  | Top charts / trending content   |
+The final output of our CNN model is a predicted class label:
+```python
+emotion_label = model(audio_tensor)  # Output: 0–4 (Neutral, Happy, Sad, Angry, Surprise)
+```
 
-Future integrations could link real-time results to:
-- **YouTube API**
-- **Spotify API**
-- **Tidal, Netflix**, etc.
+This prediction serves as the **input condition** for downstream recommendation.
 ---
 
-## Future Work
+### Connect with Hugging Face Transformers
 
-- Web app or mobile app integration (e.g., Streamlit or Flask)
-- Add multilingual emotion detection support
-- Real-time streaming audio analysis
+You can integrate additional emotion understanding or text generation via Hugging Face. For example:
 
+```python
+from transformers import pipeline
+
+emotion_to_prompt = {
+    1: "Suggest happy songs or movies for someone feeling joyful",
+    2: "Recommend comforting content for someone who's feeling sad",
+    3: "Help a person calm down with soothing content",
+    4: "Suggest something surprising and fun",
+    0: "Recommend trending neutral entertainment"
+}
+
+# Use HF model for creative prompt generation
+generator = pipeline("text-generation", model="gpt2")
+prompt = emotion_to_prompt[emotion_label]
+response = generator(prompt, max_length=30, do_sample=True)[0]['generated_text']
+```
+
+---
+### OpenAI GPT for Recommendation
+Use the predicted emotion to query OpenAI GPT to return entertainment suggestions in real time:
+
+```python
+import openai
+
+openai.api_key = "api key"
+response = openai.ChatCompletion.create(
+  model="gpt-4o",
+  messages=[
+    {"role": "system", "content": "You are an entertainment recommender assistant."},
+    {"role": "user", "content": f"I'm feeling {emotion_name}, what music or video should I watch?"}
+  ]
+)
+suggestions = response['choices'][0]['message']['content']
+print(suggestions)
+```
+
+It can  pair this with Spotify API, YouTube API, or even send it to a web interface via Streamlit/Flask.
 ---
 
 <p align="center">
