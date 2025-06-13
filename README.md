@@ -106,8 +106,8 @@ emotion_to_prompt = {
     0: "Recommend trending neutral entertainment"
 }
 
-# Use HF model for creative prompt generation
-generator = pipeline("text-generation", model="gpt2")
+# Use Hugging Face model for creative prompt generation
+generator = pipeline("text-generation", model="gpt")
 prompt = emotion_to_prompt[emotion_label]
 response = generator(prompt, max_length=30, do_sample=True)[0]['generated_text']
 ```
