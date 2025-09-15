@@ -137,3 +137,11 @@ It can  pair this with Spotify API, YouTube API, or even send it to a web interf
 <p align="center">
   <i>“Your voice tells a story — let AI interpret it and entertain you.”</i>
 </p>
+
+## Authors & Co-founders
+
+| Name | Role | GitHub |
+|------|------|--------|
+| **Frank Liu** | Authors & Developer | [@Fulankeee](https://github.com/Fulankeee) |
+| **Lebelle Dong** | Co-founder & Developer | [@LebelleDong](https://github.com/LebelleDong) |
+| **Melissa Lyu** | Co-founder & Developer | [@Melissa-lyu](https://github.com/Melissa-lyu) |
