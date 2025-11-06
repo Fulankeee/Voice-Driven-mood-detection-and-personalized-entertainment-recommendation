@@ -71,7 +71,7 @@ Flatten - FC(128) - Dropout - FC(5 classes)
 
 | Metric   | Value     |
 |----------|-----------|
-| Accuracy | ~85–90%   |
+| Accuracy | ~85%–90%   |
 | Classes  | 5         |
 
 - Validation results show strong generalization despite speaker variation
@@ -145,3 +145,4 @@ It can  pair this with Spotify API, YouTube API, or even send it to a web interf
 | **Frank Liu** | Authors & Developer | [@Fulankeee](https://github.com/Fulankeee) |
 | **Lebelle Dong** | Co-founder & Developer | [@LebelleDong](https://github.com/LebelleDong) |
 | **Melissa Lyu** | Co-founder & Developer | [@Melissa-lyu](https://github.com/Melissa-lyu) |
+
